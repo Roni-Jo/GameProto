@@ -8,7 +8,7 @@ function GameObject(x,y,w,h,color)
 {
     //defaults
     this.x = canvas.width/2;
-    this.y = canvas.width/2;
+    this.y = canvas.height/2;
     this.width = 100;
     this.height = 100;
             
