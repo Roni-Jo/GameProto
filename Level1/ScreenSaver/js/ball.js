@@ -1,26 +1,36 @@
 //variables
-var canvas
-var context
-var timer
-var interval = 1000/60 //fps
-var ball = new Ball()
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+var timer = setInterval(animate,1000/60)
+var ball = new GameObject()
 
-//defaults
-this.x =
-        
-//colors
-this.color = "teal";
-
-//draw ball
-this.drawCricle = function()
+function GameObject(x,y,w,h,color)
 {
-    context.save();
-    context.fillStyle = this.Color;
-    context.beginPath();
-    context.translate(this.XMLDocument, this.y);
-    context.arc(0, 0, this.with/2, 0, 360 *Math.PI/180, true);
-    context.closePath();
-    context.fill();
-    context.restore();
+    //defaults
+    this.x = canvas.width/2;
+    this.y = canvas.width/2;
+    this.width = 100;
+    this.height = 100;
+            
+    //color
+    this.color = "#f0ff00";
 
+    //draw ball
+    this.drawCircle = function()
+	{
+		context.save();
+			context.fillStyle = this.color;
+			context.beginPath();
+			context.translate(this.x, this.y);
+			context.arc(0, 0, this.width/2, 0, 360 *Math.PI/180, true);
+			context.closePath();
+			context.fill();
+		context.restore();
+		
+	}	
+}
+
+function animate(){
+    context.clearRect(0,0,canvas.width,canvas.height);
+    ball.drawCircle();
 }
