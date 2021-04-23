@@ -1,16 +1,15 @@
-//variables
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
-var timer = setInterval(animate,1000/60)
-var ball = new GameObject()
-
-function GameObject(x,y,w,h,color)
+//ball document
+function Ball()
 {
     //defaults
     this.x = canvas.width/2;
     this.y = canvas.height/2;
+
+    //ball speed
     this.vx = 0;
     this.vy = 0;
+
+    //ball size
     this.width = 100;
     this.height = 100;
     
@@ -31,17 +30,11 @@ function GameObject(x,y,w,h,color)
 		context.restore();
 		
     }	
-}
 
-this.move = function()
-	{
-		this.x += this.vx;
-		this.y += this.vy;
+    //ball movement
+    this.move = function()
+    {
+        this.x += this.vx;
+        this.y += this.vy;
     }
-    
-function animate(){
-    context.clearRect(0,0,canvas.width,canvas.height);
-    ball.x += 2;
-    ball.drawCircle();
-    
 }
