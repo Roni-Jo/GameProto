@@ -46,6 +46,7 @@ function animate(){
 		ball.vy = -ball.vy;	
 	}
 
+    
     ball.drawCircle();
     
 }
