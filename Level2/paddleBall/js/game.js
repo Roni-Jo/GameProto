@@ -3,7 +3,7 @@ var canvas;
 var context;
 var timer; 
 interval = 1000/60;
-var ball;
+//var ball;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
@@ -13,9 +13,16 @@ player = new GameObject();
 ball = new GameObject()
 
 player.color = "green";
+player.width = 25;
+player.x = player.width/2;
+
 
 ball.vx = 2;
 ball.vy = 2;
+ball.width = 25;
+ball.height = 25;
+ball.radius = ball.width/2
+
 
 timer = setInterval(animate, interval);
     
