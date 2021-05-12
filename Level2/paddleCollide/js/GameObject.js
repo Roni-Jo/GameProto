@@ -10,7 +10,7 @@ function GameObject()
     this.vy = 0;
 
     //size
-    this.width = 25;
+    this.width = 100;
     this.height = 100;
     this.radius = this.width/2
     
@@ -74,7 +74,7 @@ function GameObject()
     {
         context.save()
             context.fillStyle = this.color;
-			context.translate(this.x-(canvas.width/2)+50, this.y);
+			context.translate(this.x, this.y);
 			context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
 		context.restore();
     }
