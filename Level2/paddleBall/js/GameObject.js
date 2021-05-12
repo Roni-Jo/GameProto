@@ -56,7 +56,7 @@ function GameObject()
     {
         return this.y + this.height/2;
     }
-    this.hitBall = function(obj)
+    this.hitPaddle = function(obj)
     {
         if(this.left() < obj.right() && 
         this.right() > obj.left() &&
@@ -74,7 +74,7 @@ function GameObject()
     {
         context.save()
             context.fillStyle = this.color;
-			context.translate(this.x-450, this.y);
+			context.translate(this.x-(canvas.width/2), this.y);
 			context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
 		context.restore();
     }

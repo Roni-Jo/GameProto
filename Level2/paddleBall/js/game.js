@@ -12,6 +12,8 @@ context = canvas.getContext("2d");
 player = new GameObject();
 ball = new GameObject()
 
+player.color = "green";
+
 ball.vx = 2;
 ball.vy = 2;
 
@@ -74,9 +76,12 @@ function animate()
 		 ball.vy = -ball.vy;	
 	 }
 	
-	 if(ball.x < player.width - ball.radius)
+	
+	 if(ball.hitPaddle(player))
 	 {
-		 ball.vx = -ball.vx
+		ball.vx = -ball.vx;
+		context.strokeRect(ball.x- ball.width/2, ball.y - ball.height/2, ball.width, ball.height)
+		context.strokeRect(player.x- player.width/2, player.y - player.height/2, player.width, player.height)
 	 }
 
 
