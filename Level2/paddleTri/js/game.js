@@ -14,6 +14,7 @@ player2 = new GameObject();
 player3 = new GameObject();
 ball = new GameObject()
 
+
 player1.color = "green";
 player1.width = 15;
 player1.height = 50;
@@ -63,12 +64,13 @@ function animate()
 		player3.y += -2;
 	}
 
-	//player collision
-
+	// player collision
 	//bottom
 	if(player3.y > canvas.height - player3.height/2)
 	{
 		player3.y = canvas.height-player3.height/2;
+		player2.y = canvas.height-player3.height/2 - player2.height;
+		player1.y = canvas.height-player3.height/2 - player2.height - player1.height;
 	}
 
 
@@ -76,16 +78,8 @@ function animate()
 	if(player1.y < player1.height/2)
 	{
 		player1.y = player1.height/2;
-	}
-
-	if(player2.hitPaddle(player1))
-	 {
-		player2.vy = 0;
-	 }
-
-	if(player3.y < player2.height/2)
-	{
-		player3.y = player3.height/2;
+		player2.y = player1.height/2 + player1.height;
+		player3.y = player1.height/2 + player1.height + player2.height;
 	}
 
 	 //moving the ball
@@ -117,14 +111,28 @@ function animate()
 		 ball.vy = -ball.vy;	
 	 }
 	
-	
 	 if(ball.hitPaddle(player1))
 	 {
 		ball.vx = -ball.vx;
+		ball.vy = -ball.vy;
 		context.strokeRect(ball.x- ball.width/2, ball.y - ball.height/2, ball.width, ball.height)
 		context.strokeRect(player1.x- player1.width/2, player1.y - player1.height/2, player1.width, player1.height)
 	 }
 
+	 if(ball.hitPaddle(player2))
+	 {
+		ball.vx = -ball.vx;
+		context.strokeRect(ball.x- ball.width/2, ball.y - ball.height/2, ball.width, ball.height)
+		context.strokeRect(player2.x- player2.width/2, player2.y - player2.height/2, player2.width, player2.height)
+	 }
+
+	 if(ball.hitPaddle(player3))
+	 {
+		ball.vx = -ball.vx;
+		ball.vy = +ball.vy;
+		context.strokeRect(ball.x- ball.width/2, ball.y - ball.height/2, ball.width, ball.height)
+		context.strokeRect(player3.x- player3.width/2, player3.y - player3.height/2, player3.width, player3.height)
+	 }
 
     player1.drawRect();
     player2.drawRect();
