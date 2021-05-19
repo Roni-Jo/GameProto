@@ -34,8 +34,8 @@ player3.x = player3.width/2;
 player3.y = canvas.height/2 + player3.height;
 
 
-ball.vx = 2;
-ball.vy = 2;
+ball.vx = -3;
+ball.vy = 0;
 ball.width = 25;
 ball.height = 25;
 ball.radius = ball.width/2
@@ -114,7 +114,7 @@ function animate()
 	 if(ball.hitPaddle(player1))
 	 {
 		ball.vx = -ball.vx;
-		ball.vy = -ball.vy;
+		ball.vy = -2;
 		context.strokeRect(ball.x- ball.width/2, ball.y - ball.height/2, ball.width, ball.height)
 		context.strokeRect(player1.x- player1.width/2, player1.y - player1.height/2, player1.width, player1.height)
 	 }
@@ -129,7 +129,7 @@ function animate()
 	 if(ball.hitPaddle(player3))
 	 {
 		ball.vx = -ball.vx;
-		ball.vy = +ball.vy;
+		ball.vy = +2;
 		context.strokeRect(ball.x- ball.width/2, ball.y - ball.height/2, ball.width, ball.height)
 		context.strokeRect(player3.x- player3.width/2, player3.y - player3.height/2, player3.width, player3.height)
 	 }
