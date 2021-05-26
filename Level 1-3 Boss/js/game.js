@@ -17,7 +17,8 @@ context = canvas.getContext("2d");
 player = new GameObject();
 ball = new GameObject()
 
-
+player.vx = 10;
+player.vy = 10;
 player.color = "cyan";
 player.width = 250;
 player.height = 40;
@@ -26,7 +27,7 @@ player.y = canvas.height - 50;
 
 
 
-ball.vx = 5;
+ball.vx = 2;
 ball.vy = 2;
 gravity = 1;
 ball.x = canvas.width/2;
@@ -63,15 +64,13 @@ function animate()
 		player.x += -2;
 	}
 
-	// player collision
-	//bottom
+	//left and right player collision
+	
 	if(player.x > canvas.width - player.width/2)
 	{
 		player.x = canvas.width - player.width/2;
 	}
 
-
-	//top
 	if(player.x < player.width/2)
 	{
 		player.x = player.width/2;
@@ -98,7 +97,6 @@ function animate()
 	 if(ball.y > canvas.height - ball.radius)
 	 {
 		 ball.vy = ball.vy * .67;	
-
 		 score = 0
 	 }
 	 
@@ -109,8 +107,31 @@ function animate()
 	
 	 if(ball.hitPaddle(player))
 	 {
-		ball.vx = -ball.vx;
-		ball.vy = -2;
+		 if(ball.y = player.width/6)
+		 {
+			ball.vx = -ball.force*5;
+			ball.vy = -35;
+		 }
+		 if(ball.y = player.width/6 + player.width/6)
+		 {
+			ball.vx = -ball.force;
+			ball.vy = -35;
+		 }
+		 if(ball.y = player.width/6 + player.width/ 6 + player.width/6)
+		 {
+			ball.vx = -ball.vx;
+		 }
+		 if(ball.y = player.width/6 + player.width/6 + player.width/6 + player.width/6)
+		 {
+			ball.vx = ball.force;
+			ball.vy = -35;
+		 }
+		 if(ball.y = player.width/6 + player.width/6 + player.width/6 + player.width/6 + player.width/6)
+		 {
+			ball.vx = ball.force*5;
+			ball.vy = -35;
+		 }
+		
 		score++;
 	 }
 
