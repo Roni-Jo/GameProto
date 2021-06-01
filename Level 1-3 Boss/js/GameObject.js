@@ -85,4 +85,12 @@ function GameObject()
         this.x += this.vx;
         this.y += this.vy;
     }
+
+    this.drawLine = function()
+    {
+        context.save()
+        context.translate(this.x, this.y);
+        context.lineTo(this.x, this.y);
+        context.restore();
+    }
 }

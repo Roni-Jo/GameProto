@@ -12,6 +12,7 @@ function press(e)
 	if(e.keyCode == 65)
 	{
 		a = true;
+		
 	}
 	if(e.keyCode == 68)
 	{
@@ -26,9 +27,13 @@ function release(e)
 	if(e.keyCode == 65)
 	{
 		a = false;
+		player.vx *= -friction;
+		
 	}
 	if(e.keyCode == 68)
 	{
 		d = false;
+		player.vx *= friction;
+		
 	}
 }

@@ -11,14 +11,25 @@ var score = 0;
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
+// gravity, force and friction
+var ax = 1;
+var vx = 0;
+var ay = 1;
+var vy = 0;
+var force = .5;
+var friction = .1;
+var gravity = 1; 
+vy += gravity;
 
-
+//line
+line = new GameObject();
 //rectangle
 player = new GameObject();
 ball = new GameObject()
 
-player.vx = 10;
-player.vy = 10;
+
+player.vx = 5;
+player.vy = 5;
 player.color = "cyan";
 player.width = 250;
 player.height = 40;
@@ -26,7 +37,7 @@ player.x = canvas.width/2;
 player.y = canvas.height - 50;
 
 
-
+ball.y += vy;
 ball.vx = 2;
 ball.vy = 2;
 gravity = 1;
@@ -35,6 +46,7 @@ ball.y = canvas.height/2;
 ball.width = ball.radius;
 ball.height = 40;
 ball.radius = ball.width/2
+
 
 
 timer = setInterval(animate, interval);
@@ -53,15 +65,17 @@ function animate()
 
 	
     //move when keys pressed
-    if(d)
+    if(a)
 	{
 		console.log("Moving right");
-		player.x += 2;
+		vx += ax * force;
+		player.x += -vx;
 	}
-	if(a)
+	if(d)
 	{
 		console.log("Moving left");
-		player.x += -2;
+		vx += ax * force;
+		player.x += vx;
 	}
 
 	//left and right player collision
@@ -136,7 +150,7 @@ function animate()
 	 }
 
 
-
+	line.drawLine();
     player.drawRect();
 	ball.drawCircle();
 }
