@@ -13,13 +13,13 @@ context = canvas.getContext("2d");
 
 // gravity, force and friction
 var ax = 1;
-var vx = 0;
+var vx = 1;
 var ay = 1;
-var vy = 0;
-var force = .5;
+var vy = 1;
+var force = .25;
 var friction = .1;
 var gravity = 1; 
-vy += gravity;
+
 
 //line
 line = new GameObject();
@@ -38,9 +38,9 @@ player.y = canvas.height - 50;
 
 
 ball.y += vy;
-ball.vx = 2;
-ball.vy = 2;
-gravity = 1;
+ball.vx = 1;
+ball.vy = 1;
+ball.vy += gravity;
 ball.x = canvas.width/2;
 ball.y = canvas.height/2;
 ball.width = ball.radius;
@@ -56,14 +56,10 @@ function animate()
 
     context.clearRect(0,0,canvas.width,canvas.height);
 
-
 	//counter
 	context.font = "15px Arial dark gray";
 	context.fillText("Score: " + score, 80, 25);
 
-
-
-	
     //move when keys pressed
     if(a)
 	{
@@ -110,7 +106,7 @@ function animate()
 	 //collison check if hit bottom go top, if hit top go bottom.
 	 if(ball.y > canvas.height - ball.radius)
 	 {
-		 ball.vy = ball.vy * .67;	
+		 ball.vy = -ball.vy;	
 		 score = 0
 	 }
 	 
@@ -121,31 +117,7 @@ function animate()
 	
 	 if(ball.hitPaddle(player))
 	 {
-		 if(ball.y = player.width/6)
-		 {
-			ball.vx = -ball.force*5;
-			ball.vy = -35;
-		 }
-		 if(ball.y = player.width/6 + player.width/6)
-		 {
-			ball.vx = -ball.force;
-			ball.vy = -35;
-		 }
-		 if(ball.y = player.width/6 + player.width/ 6 + player.width/6)
-		 {
-			ball.vx = -ball.vx;
-		 }
-		 if(ball.y = player.width/6 + player.width/6 + player.width/6 + player.width/6)
-		 {
-			ball.vx = ball.force;
-			ball.vy = -35;
-		 }
-		 if(ball.y = player.width/6 + player.width/6 + player.width/6 + player.width/6 + player.width/6)
-		 {
-			ball.vx = ball.force*5;
-			ball.vy = -35;
-		 }
-		
+		ball.vy = -ball.vy;
 		score++;
 	 }
 
