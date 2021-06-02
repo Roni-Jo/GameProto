@@ -16,8 +16,8 @@ var ax = 1;
 var vx = 1;
 var ay = 1;
 var vy = 1;
-var force = .25;
-var friction = .1;
+var force = .5;
+var friction = .97;
 var gravity = 1; 
 
 
@@ -28,24 +28,20 @@ player = new GameObject();
 ball = new GameObject()
 
 
-player.vx = 5;
-player.vy = 5;
+player.vx = 1;
 player.color = "cyan";
 player.width = 250;
 player.height = 40;
-player.x = canvas.width/2;
-player.y = canvas.height - 50;
+//player.x = canvas.width/2;
+player.y = canvas.height - 25;
 
 
-ball.y += vy;
-ball.vx = 1;
-ball.vy = 1;
-ball.vy += gravity;
-ball.x = canvas.width/2;
+
 ball.y = canvas.height/2;
+ball.radius = 20;
 ball.width = ball.radius;
-ball.height = 40;
-ball.radius = ball.width/2
+ball.height = ball.radius;
+
 
 
 
@@ -64,14 +60,14 @@ function animate()
     if(a)
 	{
 		console.log("Moving right");
-		vx += ax * force;
-		player.x += -vx;
+		player.vx -= ax //* force;
+		player.move()
 	}
 	if(d)
 	{
 		console.log("Moving left");
-		vx += ax * force;
-		player.x += vx;
+		player.vx += ax //* force;
+		player.move()
 	}
 
 	//left and right player collision
@@ -88,24 +84,31 @@ function animate()
 	}
 
 
+	ball.vx *= friction;
+	ball.vy *= friction;
+	ball.vy += gravity;
+	
 	 //moving the ball
 	 ball.move();
     
 	 //collison check, if hit right side go left
 	 if(ball.x > canvas.width - ball.width/2)
 	 {
+		ball.x = canvas.width - ball.radius
 		ball.vx = -ball.vx;
 	 }
 	 
 	 //go right if hit left
 	 if(ball.x < 0 + ball.width/2)
 	 {
+		ball.x = 0 + ball.radius
 		 ball.vx = -ball.vx;
 	 }
  
 	 //collison check if hit bottom go top, if hit top go bottom.
 	 if(ball.y > canvas.height - ball.radius)
 	 {
+		ball.y = canvas.height - ball.radius
 		 ball.vy = -ball.vy;	
 		 score = 0
 	 }
@@ -115,13 +118,27 @@ function animate()
 		 ball.vy = -ball.vy;	
 	 }
 	
-	 if(ball.hitPaddle(player))
+	 if(player.hitPaddle(ball))
 	 {
-		ball.vy = -ball.vy;
+		
+		ball.vy = -25;
+		if(ball.x < player.x){
+			
+			ball.vx = -10;
+		}
+		if(ball.x > player.x){
+
+			ball.vx = 10;
+		}
+		ball.y = player.y-player.height/2 - ball.width/2
+		
 		score++;
 	 }
 
+	//ball.y += ball.vy;
+	
 
+	player.vx *= friction
 	line.drawLine();
     player.drawRect();
 	ball.drawCircle();

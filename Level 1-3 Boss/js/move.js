@@ -27,13 +27,10 @@ function release(e)
 	if(e.keyCode == 65)
 	{
 		a = false;
-		player.vx = 0;
 		
 	}
 	if(e.keyCode == 68)
 	{
 		d = false;
-		player.vx = 0;
-		
 	}
 }
