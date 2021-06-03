@@ -20,8 +20,6 @@ var force = .5;
 var friction = .97;
 var gravity = 1; 
 
-
-//line
 line = new GameObject();
 //rectangle
 player = new GameObject();
@@ -38,9 +36,10 @@ player.y = canvas.height - 25;
 
 
 ball.y = canvas.height/2;
-ball.radius = 20;
+ball.radius = 30;
 ball.width = ball.radius;
 ball.height = ball.radius;
+
 
 
 
@@ -130,16 +129,25 @@ function animate()
 
 			ball.vx = 10;
 		}
+
 		ball.y = player.y-player.height/2 - ball.width/2
 		
 		score++;
 	 }
 
 	//ball.y += ball.vy;
-	
+	context.save()
+            context.beginPath();
+            context.moveTo(ball.x, ball.y);
+            context.lineTo(player.x, player.y);
+        context.restore();
+
+	context.save()
+
+	line.drawLine();
+
 
 	player.vx *= friction
-	line.drawLine();
     player.drawRect();
 	ball.drawCircle();
 }

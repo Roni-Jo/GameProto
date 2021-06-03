@@ -67,7 +67,18 @@ function GameObject()
         }
         return false;
     }
-
+    this.drawLine = function()
+    {
+        context.save()
+        context.strokeStyle = "black";
+            context.beginPath();
+            context.moveTo(ball.x, ball.y);
+            context.lineTo(player.x, player.y);
+            context.closePath();
+            context.lineWidth = 2;
+            context.stroke();
+        context.restore();
+    }
 
     //draw rectangle
     this.drawRect = function()
@@ -86,11 +97,4 @@ function GameObject()
         this.y += this.vy;
     }
 
-    this.drawLine = function()
-    {
-        context.save()
-        context.translate(this.x, this.y);
-        context.lineTo(this.x, this.y);
-        context.restore();
-    }
 }
