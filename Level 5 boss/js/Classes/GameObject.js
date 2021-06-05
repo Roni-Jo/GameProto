@@ -12,6 +12,8 @@ function GameObject(obj)
 		this.vx = 0;
 		this.vy = 0;
 
+	this.hasKey = false;
+
 	//Can player jump?
 	this.canJump = false;
 	this.jumpHeight = -25;
