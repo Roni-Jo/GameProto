@@ -16,6 +16,7 @@ function GameObject(obj)
 	this.canJump = false;
 	this.jumpHeight = -25;
 	this.onWall = false;
+	this.hJump = -25;
 	
 	
 		if(obj!== undefined)
@@ -28,7 +29,8 @@ function GameObject(obj)
 				}
 			}
 		}
-		
+	
+
 	this.drawRect = function()
 	{
 		context.save();
