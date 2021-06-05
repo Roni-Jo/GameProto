@@ -154,7 +154,6 @@ function animate()
 	player.y += Math.round(player.vy);
 	
 	
-	
 
 
 	while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
