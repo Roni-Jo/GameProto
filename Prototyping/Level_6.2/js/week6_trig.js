@@ -18,6 +18,7 @@ var player;
 	pearl = new GameObject({x:200, y:200, width:25, color:"cyan"});
 	
 	
+
 	//friction
 	var fX = .80;
 	var fY = .80;
@@ -48,6 +49,20 @@ function animate()
 	//--------Make the blue pearl move to the player when it's within 300 pixels of the player.------
 	//--------If the pearl hits the player's x and y coordinates move it off screen.-----------------
 	
+	
+    
+	if(player.x >= 0)
+	{
+
+	}
+
+    if(pearl.hitTestObject(player))
+	{
+		pearl.x = 10000;
+		pearl.y = 10000;
+	}
+
+
 	//--------------------------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------END OF INSTRUCTIONS-------------------------------------------------
 	//--------------------------------------------------------------------------------------------------------------------------

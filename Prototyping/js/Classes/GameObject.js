@@ -137,7 +137,7 @@ function GameObject(obj)
 			 return newRadius;
 		 }
 	}
-
+	
 	//Draws the collision points
 	this.drawDebug = function()
 	{
