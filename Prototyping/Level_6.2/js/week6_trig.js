@@ -17,7 +17,9 @@ var player;
 	
 	pearl = new GameObject({x:200, y:200, width:25, color:"cyan"});
 	
-	
+	//distance
+	var dx = 0;
+	var dy = 0;
 
 	//friction
 	var fX = .80;
@@ -50,9 +52,18 @@ function animate()
 	//--------If the pearl hits the player's x and y coordinates move it off screen.-----------------
 	
 	
-    
-	if(player.x >= 0)
+    if(player.getDistance(pearl))
 	{
+		if(player.dx >= 300 && player.dy >=300)
+		{
+			pearl.vy = player.vy/2;
+			pearl.vx = player.vx/2;
+		}
+		else
+		{
+			pearl.vy = 0;
+			pearl.vx = 0;
+		}
 
 	}
 

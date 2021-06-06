@@ -11,6 +11,8 @@ function GameObject(obj)
 		this.ay = 1;
 		this.vx = 0;
 		this.vy = 0;
+		this.dx = 0;
+		this.dy = 0;
 		
 		//the angle that the graphic is drawn facing.
 		this.angle = 0;
@@ -136,6 +138,13 @@ function GameObject(obj)
 		 {
 			 return newRadius;
 		 }
+	}
+
+	//finding distand
+	this.getDistance = function(obj){
+		this.dy = obj.x - this.x;
+		this.dx = obj.y - this.y;
+		return Math.sqrt(obj.x * this.x + obj.y * this.y);
 	}
 
 	//Draws the collision points
